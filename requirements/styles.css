@@ -1,0 +1,370 @@
+* {
+    font-family: Arial;
+}
+
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+@page {
+    size: auto;
+    margin: 0mm;
+    padding-top:6rem;
+}
+
+.product-card {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    margin: 10px;
+    width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #ffffff;
+    position: relative; /* Needed for positioning the checkbox */
+}
+
+.select-product {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* Ensure checkbox is clickable over other elements */
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: scale-down;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 17px;
+    font-weight: bold;
+    max-inline-size: 87%;
+}
+
+.product-description {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.product-price-text {
+    font-size: 18px;
+    color: black;
+    margin-top: 10px;
+}
+
+.product-sale-price {
+    font-size: 18px;
+    color: rgb(15, 160, 15);
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.product-regular-price {
+    font-size: 15.5px;
+    color: rgb(59, 59, 59);
+    margin-top: 10px;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.25px;
+}
+
+.product-manufacturer {
+    font-size: 15px;
+    color: #333;
+    margin-top: 5px;
+}
+
+@media print {
+    body, html {
+        background: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        box-shadow: none;
+    }
+
+    .hiddenWhileNotPrinting {
+      position: absolute;
+      display: block !important;
+      bottom: 5;
+      right: 30;
+      max-height:82.5px !important;
+      max-width:82.5px !important;
+    }
+
+    .product-container, .product-card {
+        display:block;
+    }
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start; /* Align items at the start of the page vertically */
+      justify-content: flex-start;
+      width: 100%;
+      height: 100vh;
+      padding: 20px; /* Adjust padding as needed */
+  }
+
+  .product-card {
+      display: block; /* Ensure the product cards are set to display */
+      width: 48%; /* Adjust width to be slightly less than half to accommodate margins */
+      margin: 1%; /* Small margin for spacing */
+      page-break-inside: avoid; /* Avoid breaking inside a product card */
+      overflow: visible; /* Make sure content isn't clipped */
+  }
+
+
+
+
+    .noprint {
+      display: none;
+    }
+
+    .product-card:nth-of-type(even) {
+        /* page-break-after: auto; */
+        margin-top: 14px;
+        margin-bottom: 14px;
+    }
+
+    .product-card:nth-of-type(odd) {
+        margin-top: 14px;
+        margin-bottom: 14px;
+    }
+
+    .product-details {
+        display: block;
+        font-size: 12px;
+    }
+
+    .four-per-page {
+      width: 46%; /* Each card takes up less than half the container width */
+  }
+
+    .two-per-page {
+      width: 100%; 
+    }
+
+
+    .noprint, .printButton, .select-product {
+        display: none; 
+    }
+}
+
+ .printable {
+    /* width: 100%; */
+    height: auto;
+    margin: 0;
+    padding-top:5.5rem;
+    box-shadow: none;
+}
+
+.centered {
+    text-align: center;
+    align-content: center;
+    
+}
+
+.printButton {
+  margin-top:6px;
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  list-style: none;
+  padding: 3px 7px 3px 7px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.printButton:hover {
+  background-color: #f2f3f7;
+  text-decoration: none;
+  text-align: center;
+  transition-duration: 0.1s;
+}
+
+.printButton:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  text-align: center;
+  color: #959DA5;
+  cursor: default;
+}
+
+.printButton:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(233, 234, 236, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+  text-align: center;
+}
+
+.printButton:focus {
+  outline: 1px transparent;
+  text-align: center;
+}
+
+.printButton:before {
+  display: none;
+}
+
+.printButton:-webkit-details-marker {
+  display: none;
+}
+
+
+.selectDropdown {
+  z-index: 10000;
+   margin-top: .5rem;
+ /* appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;*/
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 3px 7px 3px 7px;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  background-repeat: no-repeat;
+  /* background-position: right 10px center;
+  background-size: 12px 12px; */
+} 
+
+.selectDropdown:hover {
+  transition-duration: 0.1s;
+}
+
+.selectDropdown:focus {
+  border-color: rgba(27, 31, 35, 0.3); /* Slightly darken border on focus for accessibility */
+  outline: none; /* Remove default focus outline */
+}
+
+.selectize-control {
+  display: inline-block;
+  min-width: 8%;  
+  width: auto;  
+  max-width: 100%;  
+  vertical-align: top;  
+  padding: 3px 7px; 
+}
+
+.selectize-input {
+  display: inline-block;
+  width: auto; 
+  vertical-align: middle;
+  box-sizing: border-box;  
+}
+
+@media screen {
+  .hiddenWhileNotPrinting {
+      display: none;
+  }
+}
+
+.modal {
+  text-align: center;
+  display: none;
+  position: fixed; 
+  z-index: 10000000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width:fit-content;
+  border-radius: 7px;
+}
+
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hideAfterLoaded {
+  position: relative;
+  font-size: 45px;
+  margin-top:15rem;
+  text-align: center;
+  display: flex;  
+  align-items: center; 
+  justify-content: center; 
+  opacity: 1;
+  animation: fadeOut 3.5s ease-in-out forwards; 
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+.reload {
+  font-family: Lucida Sans Unicode;
+  font-size: 22px;
+  cursor: pointer;
+  position: fixed;
+}
