@@ -2,7 +2,6 @@
     font-family: Arial;
 }
 
-
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -23,14 +22,16 @@
     overflow: hidden;
     border-radius: 10px;
     background: #ffffff;
-    position: relative; /* Needed for positioning the checkbox */
+    position: relative;
 }
 
 .select-product {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 10; /* Ensure checkbox is clickable over other elements */
+    transform: scale(3.00);
+    z-index: 10;
+    border: 0.25px rgba(0, 0, 0, 0.041);
 }
 
 .product-image {
@@ -41,6 +42,14 @@
 
 .product-details {
     padding: 15px;
+}
+
+#maintop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .product-name {
@@ -56,6 +65,7 @@
 }
 
 .product-price-text {
+    page-break-inside: avoid;
     font-size: 18px;
     color: black;
     margin-top: 10px;
@@ -108,30 +118,26 @@
     .product-container {
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-start; /* Align items at the start of the page vertically */
+      align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
       height: 100vh;
-      padding: 20px; /* Adjust padding as needed */
-  }
+      padding: 20px;
+    }
 
   .product-card {
-      display: block; /* Ensure the product cards are set to display */
-      width: 48%; /* Adjust width to be slightly less than half to accommodate margins */
-      margin: 1%; /* Small margin for spacing */
-      page-break-inside: avoid; /* Avoid breaking inside a product card */
-      overflow: visible; /* Make sure content isn't clipped */
+      display: block;
+      width: 48%;
+      margin: 1%;
+      page-break-inside: avoid;
+      overflow: visible;
   }
 
-
-
-
-    .noprint {
+    .noprint, #maintop {
       display: none;
     }
 
     .product-card:nth-of-type(even) {
-        /* page-break-after: auto; */
         margin-top: 14px;
         margin-bottom: 14px;
     }
@@ -147,21 +153,20 @@
     }
 
     .four-per-page {
-      width: 46%; /* Each card takes up less than half the container width */
+      width: 46%;
   }
 
     .two-per-page {
-      width: 100%; 
+      width: 100%;
     }
 
 
     .noprint, .printButton, .select-product {
-        display: none; 
+        display: none;
     }
 }
 
  .printable {
-    /* width: 100%; */
     height: auto;
     margin: 0;
     padding-top:5.5rem;
@@ -240,14 +245,6 @@
 .selectDropdown {
   z-index: 10000;
    margin-top: .5rem;
- /* appearance: none;
-  background-color: #FAFBFC;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #24292E;
-  cursor: pointer;*/
   display: inline-block;
   font-size: 18px;
   font-weight: 500;
@@ -260,8 +257,6 @@
   white-space: nowrap;
   width: auto;
   background-repeat: no-repeat;
-  /* background-position: right 10px center;
-  background-size: 12px 12px; */
 } 
 
 .selectDropdown:hover {
@@ -269,24 +264,24 @@
 }
 
 .selectDropdown:focus {
-  border-color: rgba(27, 31, 35, 0.3); /* Slightly darken border on focus for accessibility */
-  outline: none; /* Remove default focus outline */
+  border-color: rgba(27, 31, 35, 0.3);
+  outline: none;
 }
 
 .selectize-control {
   display: inline-block;
-  min-width: 8%;  
-  width: auto;  
-  max-width: 100%;  
-  vertical-align: top;  
-  padding: 3px 7px; 
+  min-width: 8%;
+  width: auto;
+  max-width: 100%;
+  vertical-align: top;
+  padding: 3px 7px;
 }
 
 .selectize-input {
   display: inline-block;
-  width: auto; 
+  width: auto;
   vertical-align: middle;
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 
 @media screen {
@@ -298,21 +293,21 @@
 .modal {
   text-align: center;
   display: none;
-  position: fixed; 
-  z-index: 10000000; 
+  position: fixed;
+  z-index: 10000000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width:fit-content;
@@ -339,11 +334,11 @@
   font-size: 45px;
   margin-top:15rem;
   text-align: center;
-  display: flex;  
-  align-items: center; 
-  justify-content: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
-  animation: fadeOut 3.5s ease-in-out forwards; 
+  animation: fadeOut 3.5s ease-in-out forwards;
 }
 
 @keyframes fadeOut {
@@ -367,4 +362,16 @@
   font-size: 22px;
   cursor: pointer;
   position: fixed;
+}
+
+.priceAppend {
+  padding-left: 25px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+
+}
+
+.flex-item-price {
+  flex: 1 1 200px;
 }

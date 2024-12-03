@@ -32,25 +32,40 @@ $access_token = $_GET['access_token'];
 </head>
 
 <body>
+
+<div id="mainContainerNoPrices">
 <span class="reload noprint" id="refresh">&nbsp;&#x21bb;</span>
-<div class="noprint centered">
-    <button onClick="printEverything()" class="printButton centered">Print All</button>
-    <button onCLick="printSelectedProducts()" class="printButton centered">Print Selected</button>
-    <button onCLick="clearSelectedProducts()" class="printButton centered">Clear Selected</button>
-    <div class="select-dropdown">
-        <select id="brandDropdown" class="selectDropdown" placeholder="Filter by Brand">
-        </select>
+<div class="noprint centered" id="maintop">
+  <div style="display: flex; justify-content: space-evenly; gap: 3.15%; width: 100%; max-width: 700px;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <button onClick="printEverything()" class="printButton centered">Print All Products</button>
+      <button onClick="printSelectedProducts()" class="printButton centered">Print Selected Products</button>
     </div>
+    <button onClick="clearSelectedProducts()" class="printButton centered" style="margin-top: 15px;">Clear Selected</button>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <button onClick="printPrices('all')" class="printButton centered">Print All Prices</button>
+      <button onClick="printPrices('selected')" class="printButton centered">Print Selected Prices</button>
+    </div>
+  </div>
+
+
+  <div class="select-dropdown" style="margin: 15px 0 0 20px;">
+    <select id="brandDropdown" class="selectDropdown" placeholder="Filter by Brand">
+    </select>
+  </div>
 </div>
+
 <div id="product-container" class="product-container"></div>
 <div id="hideAfterLoaded" class="hideAfterLoaded">
   <span>
     Loading...
   </span>
 </div>
-
+</div>
+<div id='appendPricesTo' class='priceAppend'></div>
 
 <script src="./requirements/scripts.js"></script>
+
 
 </body>
 
